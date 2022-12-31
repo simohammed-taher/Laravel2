@@ -13,8 +13,6 @@
         <label>Mobile</label></br>
         <input type="text" name="mobile" id="mobile" class="form-control"></br>
         <input class="form-control" name="photo" type="file" id="photo">
-
-
         <input type="submit" value="Save" class="btn btn-success"></br>
     </form>
 

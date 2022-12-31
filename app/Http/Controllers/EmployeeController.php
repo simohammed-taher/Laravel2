@@ -51,7 +51,8 @@ class EmployeeController extends Controller
      */
     public function show($id)
     {
-        //
+        $Employee = Employee::find($id);
+        return view('Employees.show')->with('Employees', $Employee);
     }
 
     /**
@@ -62,7 +63,8 @@ class EmployeeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $student = Employee::find($id);
+        return view('employee.edit')->with('employee', $student);
     }
 
     /**
@@ -74,7 +76,10 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $Employee = Employee::find($id);
+        $input = $request->all();
+        $Employee->update($input);
+        return redirect('Employee')->with('flash_message', 'student Updated!');
     }
 
     /**
@@ -85,6 +90,7 @@ class EmployeeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Employee::destroy($id);
+        return redirect('employee')->with('flash_message', 'Student deleted!');
     }
 }

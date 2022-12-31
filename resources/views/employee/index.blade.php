@@ -20,6 +20,7 @@
                                         <th>Address</th>
                                         <th>Telephone</th>
                                         <th>Photo</th>
+                                        <th>Actions</th>
                                 </thead>
                                 </thead>
                                 <tbody>
@@ -31,8 +32,15 @@
                                         <td>{{ $item->mobile }}</td>
                                         <td>
                                             <img src="{{ asset($item->photo) }}" width= '50' height='50' class="img img-responsive" />
-
-
+                                        </td>
+                                        <td>
+                                            {{-- <a href="{{ url('/employee/' . $item->id) }}" title="View Student"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a> --}}
+                                            <a href="{{ url('/employee/' . $item->id . '/edit') }}" title="Edit Student"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                                            <form method="POST" action="{{ url('/employee' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
+                                                {{ method_field('DELETE') }}
+                                                {{ csrf_field() }}
+                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete Student" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach
